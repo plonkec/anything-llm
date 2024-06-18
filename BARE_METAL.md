@@ -1,5 +1,6 @@
 # Run AnythingLLM in production without Docker
 
+
 > [!WARNING]
 > This method of deployment is **not supported** by the core-team and is to be used as a reference for your deployment.
 > You are fully responsible for securing your deployment and data in this mode.
