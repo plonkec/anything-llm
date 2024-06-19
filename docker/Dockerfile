@@ -158,7 +158,6 @@ RUN yarn install --production --network-timeout 100000 && yarn cache clean
 
 # Migrate and Run Prisma against known schema
 WORKDIR /app/server
-COPY --chown=anythingllm:anythingllm ./server/.env .env
 RUN npx prisma generate --schema=./prisma/schema.prisma && \
     npx prisma migrate deploy --schema=./prisma/schema.prisma
 WORKDIR /app
