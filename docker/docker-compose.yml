@@ -16,6 +16,7 @@ services:
       args:
         ARG_UID: ${UID:-1000}
         ARG_GID: ${GID:-1000}
+        DATABASE_URL: ${DATABASE_URL}
     cap_add:
       - SYS_ADMIN
     volumes:
