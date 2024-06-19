@@ -37,7 +37,7 @@ RUN groupadd -g "$ARG_GID" anythingllm && \
 # Copy docker helper scripts
 COPY ./docker/docker-entrypoint.sh /usr/local/bin/
 COPY ./docker/docker-healthcheck.sh /usr/local/bin/
-COPY --chown=anythingllm:anythingllm ./docker/.env.example /app/server/.env
+#COPY --chown=anythingllm:anythingllm ./docker/.env.example /app/server/.env
 
 # Ensure the scripts are executable
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
@@ -95,7 +95,7 @@ RUN groupadd -g "$ARG_GID" anythingllm && \
 # Copy docker helper scripts
 COPY ./docker/docker-entrypoint.sh /usr/local/bin/
 COPY ./docker/docker-healthcheck.sh /usr/local/bin/
-COPY --chown=anythingllm:anythingllm ./docker/.env.example /app/server/.env
+#COPY --chown=anythingllm:anythingllm ./docker/.env.example /app/server/.env
 
 # Ensure the scripts are executable
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
@@ -158,6 +158,7 @@ RUN yarn install --production --network-timeout 100000 && yarn cache clean
 
 # Migrate and Run Prisma against known schema
 WORKDIR /app/server
+COPY --chown=anythingllm:anythingllm ./server/.env .env
 RUN npx prisma generate --schema=./prisma/schema.prisma && \
     npx prisma migrate deploy --schema=./prisma/schema.prisma
 WORKDIR /app
