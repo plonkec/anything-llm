@@ -20,7 +20,7 @@ With an AWS account you can easily deploy a private AnythingLLM instance on AWS.
 
 ![Stack Output](../../../images/screenshots/cf_outputs.png)
 
-9. Wait for all resources to be built. Now wait until instance is available on `[InstanceIP]:3001`.
+9. Wait for all resources to be built. Now wait until instance is available on `[InstanceIP]:3010`.
 This process may take up to 10 minutes. See **Note** below on how to visualize this process.
 
 The output of this cloudformation stack will be:

@@ -66,7 +66,7 @@ These instructions are for CLI configuration and assume you are logged in to EC2
 server {
    # Enable websocket connections for agent protocol.
    location ~* ^/api/agent-invocation/(.*) {
-      proxy_pass http://0.0.0.0:3001;
+      proxy_pass http://0.0.0.0:3010;
       proxy_http_version 1.1;
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "Upgrade";
@@ -87,7 +87,7 @@ server {
       proxy_cache off;
 
       # Proxy your locally running service
-      proxy_pass  http://0.0.0.0:3001;
+      proxy_pass  http://0.0.0.0:3010;
     }
 }
 ```

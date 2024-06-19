@@ -46,7 +46,7 @@ REQUIRED data attributes:
 -->
 <script
   data-embed-id="5fc05aaf-2f2c-4c84-87a3-367a4692c1ee"
-  data-base-api-url="http://localhost:3001/api/embed"
+  data-base-api-url="http://localhost:3010/api/embed"
   src="http://localhost:3000/embed/anythingllm-chat-widget.min.js"
 ></script>
 ```

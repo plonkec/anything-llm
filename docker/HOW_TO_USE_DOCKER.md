@@ -55,7 +55,7 @@ docker pull mintplexlabs/anythingllm
 export STORAGE_LOCATION=$HOME/anythingllm && \
 mkdir -p $STORAGE_LOCATION && \
 touch "$STORAGE_LOCATION/.env" && \
-docker run -d -p 3001:3001 \
+docker run -d -p 3001:3010 \
 --cap-add SYS_ADMIN \
 -v ${STORAGE_LOCATION}:/app/server/storage \
 -v ${STORAGE_LOCATION}/.env:/app/server/.env \
@@ -76,7 +76,7 @@ mintplexlabs/anythingllm
 $env:STORAGE_LOCATION="$HOME\Documents\anythingllm"; `
 If(!(Test-Path $env:STORAGE_LOCATION)) {New-Item $env:STORAGE_LOCATION -ItemType Directory}; `
 If(!(Test-Path "$env:STORAGE_LOCATION\.env")) {New-Item "$env:STORAGE_LOCATION\.env" -ItemType File}; `
-docker run -d -p 3001:3001 `
+docker run -d -p 3001:3010 `
 --cap-add SYS_ADMIN `
 -v "$env:STORAGE_LOCATION`:/app/server/storage" `
 -v "$env:STORAGE_LOCATION\.env:/app/server/.env" `
@@ -98,7 +98,7 @@ services:
     image: mintplexlabs/anythingllm
     container_name: anythingllm
     ports:
-    - "3001:3001"
+    - "3001:3010"
     cap_add:
       - SYS_ADMIN
     environment:
@@ -136,12 +136,12 @@ volumes:
 </tr>
 </table>
 
-Go to `http://localhost:3001` and you are now using AnythingLLM! All your data and progress will persist between
+Go to `http://localhost:3010` and you are now using AnythingLLM! All your data and progress will persist between
 container rebuilds or pulls from Docker Hub.
 
 ## How to use the user interface
 
-- To access the full application, visit `http://localhost:3001` in your browser.
+- To access the full application, visit `http://localhost:3010` in your browser.
 
 ## About UID and GID in the ENV
 
@@ -155,7 +155,7 @@ container rebuilds or pulls from Docker Hub.
 - `cp .env.example .env` **you must do this before building**
 - `docker-compose up -d --build` to build the image - this will take a few moments.
 
-Your docker host will show the image as online once the build process is completed. This will build the app to `http://localhost:3001`.
+Your docker host will show the image as online once the build process is completed. This will build the app to `http://localhost:3010`.
 
 ## Integrations and one-click setups
 
@@ -188,15 +188,15 @@ Then in docker you need to replace that localhost part with `host.docker.interna
 ### API is not working, cannot login, LLM is "offline"?
 
 You are likely running the docker container on a remote machine like EC2 or some other instance where the reachable URL
-is not `http://localhost:3001` and instead is something like `http://193.xx.xx.xx:3001` - in this case all you need to do is add the following to your `frontend/.env.production` before running `docker-compose up -d --build`
+is not `http://localhost:3010` and instead is something like `http://193.xx.xx.xx:3010` - in this case all you need to do is add the following to your `frontend/.env.production` before running `docker-compose up -d --build`
 
 ```
 # frontend/.env.production
 GENERATE_SOURCEMAP=false
-VITE_API_BASE="http://<YOUR_REACHABLE_IP_ADDRESS>:3001/api"
+VITE_API_BASE="http://<YOUR_REACHABLE_IP_ADDRESS>:3010/api"
 ```
 
-For example, if the docker instance is available on `192.186.1.222` your `VITE_API_BASE` would look like `VITE_API_BASE="http://192.186.1.222:3001/api"` in `frontend/.env.production`.
+For example, if the docker instance is available on `192.186.1.222` your `VITE_API_BASE` would look like `VITE_API_BASE="http://192.186.1.222:3010/api"` in `frontend/.env.production`.
 
 ### Having issues with Ollama?
 
