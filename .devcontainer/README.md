@@ -14,7 +14,7 @@ Welcome to the AnythingLLM development container configuration, designed to crea
 
 - **Base Image**: Built on `mcr.microsoft.com/devcontainers/javascript-node:1-18-bookworm`, thus Node.JS LTS v18.
 - **Additional Tools**: Includes `hadolint`, and essential apt-packages such as `curl`, `gnupg`, and more.
-- **Ports**: Configured to auto-forward ports `3000` (Frontend) and `3001` (Backend).
+- **Ports**: Configured to auto-forward ports `3000` (Frontend) and `3010` (Backend).
 - **Environment Variables**: Sets `NODE_ENV` to `development` and `ESLINT_USE_FLAT_CONFIG` to `true`.
 - **VS Code Extensions**: A suite of extensions such as `Prettier`, `Docker`, `ESLint`, and more are automatically installed. Please revise if you do not agree with any of these extensions. AI-powered extensions and time trackers are (for now) not included to avoid any privacy concerns, but you can install them later in your own environment.
 
@@ -53,7 +53,7 @@ Checklist:
 
 ### Now it is ready to start
 
-In the status bar you will see three shortcuts names `Collector`, `Server` and `Frontend`. Just click-and-wait on that order (don't forget to set the Server port 3001 to Public if you are using GH Codespaces **_before_** starting the Frontend).
+In the status bar you will see three shortcuts names `Collector`, `Server` and `Frontend`. Just click-and-wait on that order (don't forget to set the Server port 3010 to Public if you are using GH Codespaces **_before_** starting the Frontend).
 
 Now you can enjoy your time developing instead of reconfiguring everything.
 

@@ -25,7 +25,7 @@ This process may take up to 10 minutes. See **Note** below on how to visualize t
 
 The output of this cloudformation stack will be:
 - 1 EC2 Instance
-- 1 Security Group with 0.0.0.0/0 access on port 3001
+- 1 Security Group with 0.0.0.0/0 access on port 3010
 - 1 EC2 Instance Volume `gb2` of 10Gib minimum - customizable pre-deploy.
 
 **Requirements**

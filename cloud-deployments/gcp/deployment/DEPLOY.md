@@ -4,7 +4,7 @@ With a GCP account you can easily deploy a private AnythingLLM instance on GCP. 
 
 The output of this cloudformation stack will be:
 - 1 GCP VM
-- 1 Security Group with 0.0.0.0/0 access on Ports 22 & 3001
+- 1 Security Group with 0.0.0.0/0 access on Ports 22 & 3010
 - 1 GCP VM Volume `gb2` of 10Gib minimum
 
 **Requirements**

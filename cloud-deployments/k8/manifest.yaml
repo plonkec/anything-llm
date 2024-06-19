@@ -147,7 +147,7 @@ spec:
           - name: AWS_SECRET_ACCESS_KEY
             value: "{{ aws_access_secret }}"
           - name: SERVER_PORT
-            value: "3001"
+            value: "3010"
           - name: JWT_SECRET
             value: "my-random-string-for-seeding" # Please generate random string at least 12 chars long.
           - name: STORAGE_DIR
@@ -188,7 +188,7 @@ spec:
           service:
             name: anything-llm-svc
             port: 
-              number: 3001
+              number: 3010
   tls: # < placing a host in the TLS config will indicate a cert should be created
     - hosts:
         - "{{ namespace }}-chat.{{ base_domain }}"
@@ -205,7 +205,7 @@ spec:
   ports:
   # "port" is external port, and "targetPort" is internal.
   - port: 3301
-    targetPort: 3001
+    targetPort: 3010
     name: traffic
   - port: 9090
     targetPort: 9090

@@ -2,7 +2,7 @@ const { Telemetry } = require("../../models/telemetry");
 const { CommunicationKey } = require("../comKey");
 const setupTelemetry = require("../telemetry");
 
-function bootSSL(app, port = 3001) {
+function bootSSL(app, port = 3010) {
   try {
     console.log(
       `\x1b[33m[SSL BOOT ENABLED]\x1b[0m Loading the certificate and key for HTTPS mode...`
@@ -38,7 +38,7 @@ function bootSSL(app, port = 3001) {
   }
 }
 
-function bootHTTP(app, port = 3001) {
+function bootHTTP(app, port = 3010) {
   if (!app) throw new Error('No "app" defined - crashing!');
 
   app
