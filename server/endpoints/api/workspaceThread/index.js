@@ -299,8 +299,6 @@ function apiWorkspaceThreadEndpoints(app) {
           {
             workspaceId: workspace.id,
             thread_id: thread.id,
-            api_session_id: null, // Do not include API session chats.
-            include: true,
           },
           null,
           { id: "asc" }
@@ -372,12 +370,24 @@ function apiWorkspaceThreadEndpoints(app) {
       */
       try {
         const { slug, threadSlug } = request.params;
-        const { message, mode = "query", userId } = reqBody(request);
+        const { messageBy, message, mode = "query", userId } = reqBody(request);
         const workspace = await Workspace.get({ slug });
         const thread = await WorkspaceThread.get({
           slug: threadSlug,
           workspace_id: workspace.id,
         });
+
+        if (!messageBy || !['user', 'assistant'].includes(messageBy)) {
+          response.status(400).json({
+            id: uuidv4(),
+            type: "abort",
+            textResponse: null,
+            sources: [],
+            close: true,
+            error: `messageBy is not valid.`,
+          });
+          return;
+        }
 
         if (!workspace || !thread) {
           response.status(400).json({
@@ -406,6 +416,27 @@ function apiWorkspaceThreadEndpoints(app) {
         }
 
         const user = userId ? await User.get({ id: Number(userId) }) : null;
+
+        if (messageBy === 'assistant') {
+          // Add assistant message to thread
+          await WorkspaceChats.new({
+            workspaceId: workspace.id,
+            threadId: thread.id,
+            prompt: "",
+            response: {
+              text: message,
+              sources: [],
+              type: mode,
+            },
+            include: true,
+            apiSessionId: uuidv4(),
+          });
+
+          response.status(200).json({ ok: true });
+          return;
+        }
+
+
         const result = await ApiChatHandler.chatSync({
           workspace,
           message,
